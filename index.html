@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С 8 марта!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #big-heart {
+            font-size: 100px;
+            cursor: pointer;
+        }
+        #message {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .small-heart {
+            display: none;
+            font-size: 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="big-heart">❤️</div>
+    <div id="message">Нажми на меня</div>
+    <div id="small-hearts-container">
+        <div class="small-heart">💖</div>
+        <div class="small-heart">💖</div>
+        <div class="small-heart">💖</div>
+        <div class="small-heart">💖</div>
+        <div class="small-heart">💖</div>
+    </div>
+
+    <script>
+        const bigHeart = document.getElementById('big-heart');
+        const message = document.getElementById('message');
+        const smallHearts = document.querySelectorAll('.small-heart');
+
+        bigHeart.addEventListener('click', () => {
+            message.style.display = 'none'; // Скрыть сообщение
+
+            let delay = 0;
+
+            smallHearts.forEach((heart, index) => {
+                setTimeout(() => {
+                    heart.style.display = 'inline'; // Показать маленькое сердце
+                }, delay);
+                delay += 400; // Увеличиваем задержку на 1 секунду для каждого сердца
+            });
+
+            // После показа всех сердец, открыть другой HTML файл
+            setTimeout(() => {
+                window.location.href = 'valentine.html'; // Переход на другой файл
+            }, delay + 100); // Добавляем еще 1 секунду перед переходом
+        });
+    </script>
+
+</body>
+</html>
